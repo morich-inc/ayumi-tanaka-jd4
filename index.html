@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>田中 鮎美 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>田中 鮎美 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ディップ株式会社</a>
+  <a href="#k2">2. SHE株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">エグゼクティブマネージャー（事業コントローラー/FP＆Ａ）</span><span class="badge badge-blue">東証プライム上場</span></div>
+  <div class="co-name">ディップ株式会社</div>
+  <div class="co-url"><a href="https://www.dip-net.co.jp/" target="_blank">https://www.dip-net.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区六本木住友不動産六本木グランドタワー３１階</td></tr><tr><th>上場区分</th><td>東証プライム上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>大谷選手のCMでも話題の同社</li><li>&quot;私たちdipは夢とアイデアと情熱で社会を改善する存在となる&quot;という企業理念を掲げており、求人情報サービス「バイトル」や「はたらこねっと」などの人材サービスに加えて、コボットなどのDXサービスを提供する『労働力の総合商社』として、近年はAIやデータを活用した業務支援など、労働市場の課題解決に取り組んでいます</li><li>働く環境としても、ライフステージの変化を前提とした制度整備が進み、柔軟な働き方や健康面への配慮も充実</li><li>年齢や社歴に左右されず、落ち着いた環境で腰を据えて事業に向き合えるカルチャーがあり、これまでのキャリアを活かしながら、安心して次の挑戦ができる職場です</li><li>健康経営優良法人2024 大規模法人部門（ホワイト500）に認定★2年連続で認定</li><li>厚生労働省「くるみんマーク」「えるぼしマーク」に認定</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">日本最大級の求人情報数を掲載するアルバイト・パート求人情報サイト「バイトル」などを展開している東証プライム上場企業です。労働市場における諸課題を解決し、 誰もが働く喜びと幸せを感じられる社会の実現を目指す&quot;Labor force solution company&quot;をビジョンに掲げています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>日本最大級の求人情報数を掲載するアルバイト・パート求人情報サイト「バイトル」などを展開している東証プライム上場企業です。</p><p>労働市場における諸課題を解決し、 誰もが働く喜びと幸せを感じられる社会の実現を目指す&quot;Labor force solution company&quot;をビジョンに掲げ、 求人情報サービス「バイトル」や「はたらこねっと」などの人材サービス事業と、AIや自動化技術（RPA）を活用したDX事業を運営しています。</p><p>2002年インターネットの黎明期に誕生した「バイトル」は、紙媒体が主流であった求人情報をオンラインに移行することで、求職者へ多くの情報をスピーディーに届けることを可能とし、求人情報の在り方を大きく進化させました。</p><p>また、営業担当者が求職者に代わり給与アップなどを交渉する「ディップ・インセンティブ・プロジェクト」では、「バイトル」内で1年以内に時給アップした求人件数が20万件を超えるなど、ユーザーファーストなサービスを追求し働く人の待遇向上に向けた取り組みを実施しています。</p><p>2019年にスタートしたDX事業ではSaaSプロダクトである『面接コボット』、LINEミニアプリ『常連コボットforLINE』人材派遣会社の営業支援ツール『HRコボット』『セールスパック』などを展開。AI・RPAサービスを提供することで企業の人材不足解消のスピード化・効率化を図っています。売上も順調に積み上がり、契約企業数も右肩上がりの高成長を継続しています。</p><p>ディップ（ｄｉｐ）という社名は、ドリーム、アイデア、パッションの頭文字を並べたもので、企業理念「私たちdipは夢とアイデアと情熱で社会を改善する存在となる」のもと、 事業活動を通じて持続可能な社会の実現に貢献する活動をしています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 エグゼクティブマネージャー（事業コントローラー/FP＆Ａ）</div>
+          <div class="job-preview">本部長や事業部長のパートナーとして担当事業セグメントの中長期計画、年次予算策定、予実管理、業績改善PJなどを推進</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>年収：9,830,000円 - 18,000,000円</strong></p><p><strong>■業務内容：</strong></p><p>本部長や事業部長のパートナーとして、担当事業セグメントの中長期計画、年次予算策定、予実管理、業績改善PJなどを通し、担当事業セグメントが、適切な目標を設定し、正しい現状把握から意味のある課題と機会を発見し、戦略/施策を立案・実行できるように、経営の計画及び実行における様々な意思決定を支援すること。</p><p><strong>■企業理念とビジョン</strong></p><p>ディップ株式会社は、「私たちdipは夢とアイデアと情熱で社会を改善する存在となる」という企業理念のもと、&quot;Labor force solution company&quot;をビジョンに掲げ、人材サービスとDXサービスの提供を通して、 労働市場における諸課題を解決し、 誰もが働く喜びと幸せを感じられる社会の実現を目指しています。</p><p><strong>■求めるスキル・経験</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>一般的な財務会計知識</li><li>事業会社での管理会計経験(予算/業績予想/中期計画/原価等)</li><li>経営層や営業部門などのステークホルダーと論理的、建設的なコミュニケーション、関係構築を行う力</li></ul><p>※事業会社での経営管理、経営企画または事業部での予算策定・計数管理・予実管理のご経験およびマネジメント層へのビジネスパートナリング経験をお持ちの方を想定しております。担当事業セグメントの中長期計画、年次予算策定、予実管理、業績改善PJなどを通し、担当事業セグメントが、適切な目標を設定し、正しい現状把握から意味のある課題と機会を発見し、戦略/施策を立案・実行できるように、事業部の計画及び実行における様々な意思決定を支援すること。</p><p><strong>■求める人物像</strong></p><ul><li>数字や分析結果に対する正確さと緻密さ</li><li>分析やデータ管理で使用するITツールを使用するためのスキル</li><li>求めた分析結果を経営に役立てるための経営者の視点</li><li>その考察を経営陣に理解してもらい意思決定に影響を与えることのできるコミュニケーション能力</li><li>先頭に立って手を動かしてチームに一体感をもたらすことができる</li><li>年齢や役職を問わず分け隔てなく人に向き合い成長を支援できる</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都港区六本木</span><span class="pill">🏠 テレワーク週2日程度</span><span class="pill">✅ 副業可</span><span class="pill">💰 983万円 - 1,800万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.dip-net.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://recruit-dip.com/career/culture/" target="_blank">🏛️ 社風・風土</a><a class="lbtn lbtn-out" href="https://dippeople.dip-net.jp/" target="_blank">👥 社員紹介</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">FP＆A（経営企画）</span><span class="badge badge-blue">IPO準備中</span></div>
+  <div class="co-name">SHE株式会社</div>
+  <div class="co-url"><a href="https://she-inc.co.jp/about" target="_blank">https://she-inc.co.jp/about</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区南青山3丁目7−21</td></tr><tr><th>設立</th><td>2017年</td></tr><tr><th>累計調達額</th><td>44億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>女性の&quot;自己実現&quot;を支援する社会的意義の高い事業</li><li>累計受講者3万人超、5,000人以上のリアル会員（確かな実績）</li><li>IVSローンチパッド優勝などスタートアップ業界での高評価</li><li>IPO準備中</li><li>美容・金融などキャリア以外の新領域にも展開中</li><li>シリーズCで17.5億円を調達、累計調達額は44億円に到達</li><li>「SHElikes」×「SHEbeauty」×「SHEmoney」による包括的支援</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">SHE株式会社は、女性向けキャリア支援領域で国内最大級の規模を誇る成長企業です。主力のSHElikesは、Webデザインやマーケティングなど50以上の職種スキルを定額で学べるだけでなく、コーチングや仕事機会の提供までを一気通貫で支援する点に独自性があります。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>SHE株式会社は、女性向けキャリア支援領域で国内最大級の規模を誇る成長企業です。</p><p>主力のSHElikesは、Webデザインやマーケティングなど50以上の職種スキルを定額で学べるだけでなく、コーチングや仕事機会の提供までを一気通貫で支援する点に独自性があります。2017年の創業以降、累計会員数は20万人を突破し、2025年2月にはシリーズCで17.5億円を調達、累計調達額は44億円に到達。大手事業会社・著名投資家からの継続支援も受け、社会性と成長性の両面で高い期待を集めています。事業拡大フェーズの今、社会課題の解決と事業成長を両立させながら、大きな裁量を持って組織づくりや事業推進に関わることができる環境です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 FP＆A（経営企画）</div>
+          <div class="job-preview">取締役CFOとともにFP&Aチームの本格立ち上げを担当し、全社の予実管理と各サービスのKPI管理を実施</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>年収：650万円～1,000万円</strong></p><p><strong>■募集背景</strong></p><p>SHEでは、「一人一人が自分にしかない価値を発揮し、熱狂して生きる世の中を創る」というVisionを実現するため、既存のSHElikesを中心に個人向けや法人向けサービス等の複数サービスを展開しています。</p><p>今後IPOやグローバルを目指していく中で、事業成長の重要な意思決定を担う、財務分析と予算管理の強化が急務となっております。そのため、FP&Aチームの立ち上げ強化をし、戦略的な財務支援を提供できる人材を募集いたします。</p><p><strong>■SHEで（FP&A）をすることの魅力・面白さ</strong></p><ul><li>ToB/ToC問わずSHEの全ブランドの事業領域に関わり、経営陣に対して、直接、財務データに基づいたインサイトを提供し、事業戦略や予算編成に重要な役割を担当していただけます。</li><li>FP&Aとして、営業、マーケティング、プロダクト開発、人事など多くの部門と連携しながら企業全体の業務プロセスや課題解決を行っていただけます。</li><li>またIPOやグローバル等の今後の中期経営計画の策定に関しても、経営陣と対話しながら、経営の戦略的意思決定の支援を行っていただけます。</li></ul><p><strong>■仕事内容</strong></p><ul><li>財務分析：予算対実績の分析、収益見通し作成</li><li>予算策定：年間予算の作成および予算管理プロセスのサポート。</li><li>事業モニタリング：事業モニタリング、各施策のROI判定、効果測定</li><li>コスト管理：コスト予算管理とコスト削減提案。</li><li>ビジネスパートナーシップ：他部門と連携し、財務的なアドバイスを提供。</li><li>データ管理：財務データの収集、整理、分析。データの整合性と正確性の確保。</li></ul><p><strong>■入社後のミッション/役割</strong></p><ul><li>取締役CFOとともにFP&Aチームの本格立ち上げを担当していただきます。</li><li>FP&Aとして、全社の予実管理と各サービスのKPI管理と効果測定等を実施し、各部門長/経営陣の戦略的意思決定の支援を担当していただきます。</li></ul><p><strong>■必須スキル</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>経験：FP&Aまたは関連分野での経験。</li><li>分析スキル：Excelスキル（VLOOKUP、ピボットテーブル、マクロなど）。財務モデリング経験。</li><li>コミュニケーション：優れた口頭および書面でのコミュニケーション能力。経営陣とのプレゼンテーションスキル。</li><li>ソフトウェア：財務ソフトウェアやBIツールの使用経験。</li></ul><p><strong>■歓迎スキル</strong></p><p><span class='tag tag-want'>WANT</span></p><ul><li>事業責任者、FP＆Aの立ち上げ経験者</li><li>言語：ビジネスレベルの英語力</li></ul><p><strong>■求める人物像</strong></p><ul><li>SHEのビジョンに共感いただける方</li><li>熱量をもってスピーディに問題解決に向けて動くことのできる方、またその実績をお持ちの方</li><li>日々変化する課題や事業状態を楽しみ、柔軟に意志決定ができる方</li><li>チームを大事にし、強い組織を作っていきたいという思いがある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都港区南青山</span><span class="pill">🏠 週2回出社+リモート</span><span class="pill">💰 650万円～1,000万円</span><span class="pill">🕒 フレックス（コアタイムなし）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://she-inc.co.jp/about" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://sheinc.notion.site/SHE-Entrance-Book-6df2b2a40d304e4a8479a3d3e102300c" target="_blank">📖 SHE Entrance Book</a><a class="lbtn lbtn-out" href="https://prtimes.jp/main/html/rd/p/000000133.000027564.html" target="_blank">🏆 IVSローンチパッド優勝</a><a class="lbtn lbtn-out" href="https://note.com/sheshares/n/n0571909babb9" target="_blank">💡 投資家視点での可能性解説</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが田中 鮎美 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
